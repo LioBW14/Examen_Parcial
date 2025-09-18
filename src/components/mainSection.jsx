@@ -2,6 +2,7 @@ import foto1 from "../assets/invierno.jpg";
 import foto2 from "../assets/otonio.jpg";
 import foto4 from "../assets/verano.jpg";
 import foto3 from "../assets/primavera.jpg";
+import Modal from "./modal";  
 import Rate from "./rate";
 import Envia from "./envia";
 import { useState } from "react";
@@ -16,6 +17,7 @@ function MainSection() {
 
  
   const [promedio, setPromedio] = useState(0);
+  const [modal, setModal] = useState(0);
 
   const actualizaRate = (index, valor) => {
     const newImages = [...images];
@@ -28,6 +30,7 @@ function MainSection() {
     images.reduce((acum, img) => (acum += img.rate), 0) / images.length;
     console.log(`el promedio es ${prom}`);
     setPromedio(prom)
+    setModal(true)
   };
 
   
@@ -48,6 +51,11 @@ function MainSection() {
         >
           Calcula promedio
         </Envia>
+        
+        <Modal modal={modal} setModal={setModal}>
+
+
+        </Modal>
         
       </div>
     </>
